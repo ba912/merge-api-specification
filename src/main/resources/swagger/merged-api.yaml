@@ -1,0 +1,58 @@
+openapi: 3.0.1
+info:
+  title: Merged API
+  description: Merged Api Specification
+  version: 1.0.0
+servers:
+- url: http://localhost:8080/merged-api
+paths:
+  /users:
+    get:
+      tags:
+      - user
+      summary: Get Users
+      operationId: listUsers
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/User'
+  /teams:
+    get:
+      tags:
+      - team
+      summary: Get Teams
+      operationId: listTeams
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Team'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
+        email:
+          type: string
+    Team:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+        name:
+          type: string
